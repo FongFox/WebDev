@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
+</head>
+<body>
+    <div id="toast">
+        <!-- success -->
+        <!-- Infor -->
+        <!-- <div class="toast toast--infor">
+            <div class="toast__icon">
+                <div class="ti-check-box"></div>
+            </div>
+            <div class="toast__body">
+                <div class="toast__title">
+                Infor
+                </div>
+                <div class="toast__mess">
+                    this is a long message for example
+                </div>
+            </div>
+            <div class="toast__close">
+                <div class="ti-close"></div>
+            </div>
+        </div> -->
+        <!-- Warning -->
+        <!-- <div class="toast toast--warning">
+            <div class="toast__icon">
+                <div class="ti-check-box"></div>
+            </div>
+            <div class="toast__body">
+                <div class="toast__title">
+                    Warning
+                </div>
+                <div class="toast__mess">
+                    this is a long message for example
+                </div>
+            </div>
+            <div class="toast__close">
+                <div class="ti-close"></div>
+            </div>
+        </div> -->
+        <!-- Error -->
+        <!-- <div class="toast toast--error">
+            <div class="toast__icon">
+                <div class="ti-check-box"></div>
+            </div>
+            <div class="toast__body">
+                <div class="toast__title">
+                    Error
+                </div>
+                <div class="toast__mess">
+                    this is a long message for example
+                </div>
+            </div>
+            <div class="toast__close">
+                <div class="ti-close"></div>
+            </div>
+        </div> -->
+
+    </div>
+
+    <div>
+        <!-- <button href="" class="btn  btn--size-s btn--success">GO TO NEXT THINGS</button>
+        <button href="" class="btn  btn--size-s btn--warning">OK</button>
+        <button href="" class="btn  btn--size-s btn--error">TRY AGAIN!!</button>
+    </div>
+    <div>
+        <button href="" class="btn btn--success">GO TO NEXT THINGS</button>
+        <button href="" class="btn btn--warning btn--disabled">OK</button>
+        <button href="" class="btn btn--error">TRY AGAIN!!</button>
+    </div>
+    <div>
+        <button href="" class="btn  btn--size-l btn--success">GO TO NEXT THINGS</button>
+        <button href="" class="btn btn--size-l btn--warning">OK</button>
+        <button href="" class="btn btn--size-l btn--error">TRY AGAIN!!</button> -->
+
+        <div onclick="showSuccessToast()" class="btn btn--success">
+            Show Success toast
+        </div>
+        <div onclick="showWarningToast()" class="btn btn--warning">
+            Show Warning toast
+        </div>
+    </div>
+
+    <script>
+        //show toast function
+        function toast
+        ({
+        title = '' ,
+        message = '' , 
+        type = 'info', 
+        duration = 3000
+        }) {
+            const main = document.getElementById('toast');
+            if(main) {
+                const toast = document.createElement('div');
+                const icons = {
+                    success: 'ti-check-box',
+                    infor: 'ti-info-alt',
+                    warning: 'ti-alert',
+                    error: 'ti-layout-placeholder',
+                };
+                const icon = icons[type]; 
+
+                toast.style.animation = `
+                animation: slideInLeft ease .2s, fadeOut linear 2s forwards;
+                `;
+
+                toast.classList.add('toast', `toast--${type}`);
+                toast.innerHTML = `
+                    <div class="toast__icon">
+                        <div class="${icon}"></div>
+                    </div>
+                    <div class="toast__body">
+                        <div class="toast__title">
+                            ${title}
+                        </div>
+                        <div class="toast__mess">
+                            ${message}
+                        </div>
+                    </div>
+                    <div class="toast__close">
+                        <div class="ti-close"></div>
+                    </div>
+                `;
+                main.appendChild(toast);
+
+                setTimeout(function() {
+                    main.removeChild(toast);
+                }, duration + 3500);
+            }
+        }
+        
+        function showSuccessToast() {
+            toast (
+            {
+               title: 'Success',
+               message: 'This is the message that you are success!',
+               type: 'success',
+               duration: 3000,
+            })
+        }
+        function showWarningToast() {
+            toast (
+            {
+               title: 'Warning',
+               message: 'This is the message that you are in danger!!!!!',
+               type: 'warning',
+               duration: 3000,
+            })
+        }
+    </script>
+</body>
+</html>
