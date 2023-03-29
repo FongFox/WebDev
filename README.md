@@ -1,3 +1,3 @@
 # WebDev
-Web Development VScode
+Web Development VScode (learning)
 Tool: html/css, js, icon(themify icons)
